@@ -1,0 +1,27 @@
+progress bar medium size should show  fills from 0% to 100%  and other visual Effects, and below this some other context which mostly used in this type of progress bar
+
+
+
+Hi, I’m Faheem
+
+below, in p tag there should should smooth typing words effect , show my skillset which change one by one Backend Developer | Frontend Developer | Automation & Scripting | AI and ML | Zapier & n8n 
+
+Hire Me
+"
+Background 3d animated not shwoing :
+Fullscreen vanta.js:
+( <script src="three.r134.min.js"></script>
+<script src="vanta.halo.min.js"></script>
+<script>
+VANTA.HALO({
+  el: "#your-element-selector",
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00
+})
+</script> )
+
+
+when i click on any card of project it should show a large 80% card which show large image, title, description and link to github and what tech used, please add dummy enteries i will replace late
