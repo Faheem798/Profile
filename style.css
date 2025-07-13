@@ -1,5 +1,5 @@
 /* Screen reader only text */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
 
 .sr-only {
     position: absolute;
@@ -934,6 +934,7 @@ textarea.glassmorphic-input {
     .nav-links li {
         opacity: 0;
         margin: 20px 0;
+        will-change: opacity;
     }
 
     .nav-links.nav-active li {
