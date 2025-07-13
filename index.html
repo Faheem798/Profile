@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faheem - Web Developer</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/dist/phosphor.js"></script>
-    <script src="three.r134.min.js"></script>
-    <script src="vanta.halo.min.js"></script>
 </head>
 <body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
     <nav class="navbar">
         <div class="nav-logo">Faheem</div>
         <ul class="nav-links">
@@ -23,18 +24,22 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <div class="theme-switcher">
+            <i class="ph-fill ph-sun"></i>
+            <i class="ph-fill ph-moon"></i>
+        </div>
         <div class="hamburger">
             <div class="line1"></div>
             <div class="line2"></div>
             <div class="line3"></div>
         </div>
     </nav>
-    <div class="preloader">
+    <div class="preloader" aria-hidden="true">
         <div class="preloader-content">
             <h1 class="preloader-logo">Faheem</h1>
             <div class="progress-bar-container">
                 <div class="progress-bar"></div>
-                <p class="progress-bar-context">Loading creative assets and experiences...</p>
+                <span class="progress-text">0%</span>
             </div>
         </div>
     </div>
@@ -43,9 +48,14 @@
         <section id="hero" class="hero-section" data-scroll-section>
             <div id="vanta-bg"></div>
             <div class="hero-content">
-                <h1 class="hero-headline">Hi, I’m Faheem <span class="typing-text"></span></h1>
+                <h1 class="hero-headline">Hi, I’m Faheem</h1>
                 <p class="hero-subtitle"><span class="dynamic-skillset"></span></p>
                 <button class="cta-button">Hire Me</button>
+                <div class="hero-socials">
+                    <a href="https://github.com/faheem-2001" title="GitHub"><i class="ph-fill ph-github-logo"></i></a>
+                    <a href="https://www.linkedin.com/in/faheem-khan-9a733a228/" title="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+                    <a href="https://www.upwork.com/freelancers/~012511588219214953" title="Upwork"><i class="ph-fill ph-briefcase"></i></a>
+                </div>
             </div>
             <div class="neon-orb orb-1"></div>
             <div class="neon-orb orb-2"></div>
@@ -56,14 +66,14 @@
         <section id="about" class="about-section" data-scroll-section>
             <div class="about-content">
                 <div class="profile-image-container">
-                    <img src="assets/Profile.svg" alt="Profile Image" class="profile-image">
+                    <img src="./assets/Profile.svg" alt="Profile Image" class="profile-image">
                 </div>
                 <div class="bio-skills">
                     <h2>About Me</h2>
                     <p>
                         I am a passionate web developer with a keen eye for detail and a love for creating
                         beautiful and functional digital experiences. I specialize in building responsive,
-                        high-performance websites and applications.
+                        high-performance websites and applications that solve real-world problems.
                     </p>
                     <div class="skill-icons">
                         <i class="ph-fill ph-file-html"></i>
@@ -71,7 +81,6 @@
                         <i class="ph-fill ph-file-js"></i>
                         <i class="ph-fill ph-react-logo"></i>
                         <i class="ph-fill ph-django-logo"></i>
-                        <i class="ph-fill ph-fastapi-logo"></i>
                     </div>
                 </div>
             </div>
@@ -82,31 +91,24 @@
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">TypeScript</span>
                 <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">SQL</span>
                 <span class="tech-tag">HTML5</span>
-                <span class="tech-tag">CSS3 (Bootstrap, Tailwind)</span>
-                <span class="tech-tag">Spring Boot</span>
+                <span class="tech-tag">CSS3</span>
                 <span class="tech-tag">React</span>
-                <span class="tech-tag">Node.js/Express</span>
+                <span class="tech-tag">Node.js</span>
                 <span class="tech-tag">Django</span>
-                <span class="tech-tag">JUnit</span>
-                <span class="tech-tag">pytest</span>
-                <span class="tech-tag">TensorFlow</span>
-                <span class="tech-tag">Keras</span>
-                <span class="tech-tag">Scikit-learn</span>
-                <span class="tech-tag">NumPy</span>
-                <span class="tech-tag">Pandas</span>
-                <span class="tech-tag">Matplotlib</span>
+                <span class="tech-tag">Git</span>
+                <span class="tech-tag">REST APIs</span>
+                <span class="tech-tag">Linux</span>
             </div>
         </section>
         <section id="projects" class="projects-section" data-scroll-section>
             <h2>My Projects</h2>
             <div class="projects-container">
-                <div class="project-card" data-title="E-commerce Platform" data-description="This is a dummy description for the E-commerce Platform project. It would typically include details about features, technologies used, and challenges overcome." data-tech="<i class='ph-fill ph-react-logo'></i><i class='ph-fill ph-nodejs-logo'></i><i class='ph-fill ph-mongodb-logo'></i>" data-github="https://github.com/dummy-repo/ecommerce">
-                    <img src="assets/project-1.png" alt="Project 1">
+                <div class="project-card" data-title="E-commerce Platform" data-description="A full-featured e-commerce platform with a modern UI, product management, and a secure checkout process. Built with the MERN stack." data-tech="<i class='ph-fill ph-react-logo'></i><i class='ph-fill ph-nodejs-logo'></i><i class='ph-fill ph-mongodb-logo'></i>" data-github="https://github.com/faheem-2001/E-commerce-Web-Application">
+                    <img src="./assets/project-1.png" alt="Project 1">
                     <div class="card-content">
                         <h3>E-commerce Platform</h3>
-                        <p>A brief description of project one.</p>
+                        <p>A full-featured e-commerce platform with a modern UI.</p>
                         <div class="tech-stack-icons">
                             <i class="ph-fill ph-react-logo"></i>
                             <i class="ph-fill ph-nodejs-logo"></i>
@@ -114,11 +116,11 @@
                         <span class="project-cta">View Details</span>
                     </div>
                 </div>
-                <div class="project-card" data-title="Data Visualization Dashboard" data-description="This is a dummy description for the Data Visualization Dashboard project. It would typically include details about features, technologies used, and challenges overcome." data-tech="<i class='ph-fill ph-d3-logo'></i><i class='ph-fill ph-file-js'></i><i class='ph-fill ph-file-css'></i>" data-github="https://github.com/dummy-repo/data-viz">
-                    <img src="assets/project-2.png" alt="Project 2">
+                <div class="project-card" data-title="Data Visualization Dashboard" data-description="An interactive dashboard for visualizing complex datasets. Features various chart types and filtering options to gain insights from data." data-tech="<i class='ph-fill ph-d3-logo'></i><i class='ph-fill ph-file-js'></i><i class='ph-fill ph-file-css'></i>" data-github="https://github.com/faheem-2001/E-commerce-Web-Application">
+                    <img src="./assets/project-2.png" alt="Project 2">
                     <div class="card-content">
                         <h3>Data Viz Dashboard</h3>
-                        <p>A brief description of project two.</p>
+                        <p>An interactive dashboard for visualizing complex datasets.</p>
                         <div class="tech-stack-icons">
                             <i class="ph-fill ph-d3-logo"></i>
                             <i class="ph-fill ph-file-js"></i>
@@ -126,33 +128,33 @@
                         <span class="project-cta">View Details</span>
                     </div>
                 </div>
-                <div class="project-card" data-title="Mobile Fitness App" data-description="This is a dummy description for the Mobile Fitness App project. It would typically include details about features, technologies used, and challenges overcome." data-tech="<i class='ph-fill ph-flutter-logo'></i><i class='ph-fill ph-firebase-logo'></i>" data-github="https://github.com/dummy-repo/fitness-app">
-                    <img src="assets/project-3.png" alt="Project 3">
+                <div class="project-card" data-title="Mobile Fitness App" data-description="A cross-platform mobile app to track workouts, set fitness goals, and monitor progress. Includes social features to connect with friends." data-tech="<i class='ph-fill ph-flutter-logo'></i><i class='ph-fill ph-firebase-logo'></i>" data-github="https://github.com/faheem-2001/E-commerce-Web-Application">
+                    <img src="./assets/project-3.png" alt="Project 3">
                     <div class="card-content">
                         <h3>Mobile Fitness App</h3>
-                        <p>A brief description of project three.</p>
+                        <p>A cross-platform mobile app to track workouts and set goals.</p>
                         <div class="tech-stack-icons">
                             <i class="ph-fill ph-flutter-logo"></i>
                         </div>
                         <span class="project-cta">View Details</span>
                     </div>
                 </div>
-                <div class="project-card" data-title="AI-Powered Chatbot" data-description="This is a dummy description for the AI-Powered Chatbot project. It would typically include details about features, technologies used, and challenges overcome." data-tech="<i class='ph-fill ph-python-logo'></i><i class='ph-fill ph-tensorflow-logo'></i>" data-github="https://github.com/dummy-repo/chatbot">
-                    <img src="assets/project-4.png" alt="Project 4">
+                <div class="project-card" data-title="AI-Powered Chatbot" data-description="An intelligent chatbot using natural language processing to understand and respond to user queries in real-time. Integrated with a knowledge base." data-tech="<i class='ph-fill ph-python-logo'></i><i class='ph-fill ph-tensorflow-logo'></i>" data-github="https://github.com/faheem-2001/E-commerce-Web-Application">
+                    <img src="./assets/project-4.png" alt="Project 4">
                     <div class="card-content">
                         <h3>AI-Powered Chatbot</h3>
-                        <p>A brief description of project four.</p>
+                        <p>An intelligent chatbot using natural language processing.</p>
                         <div class="tech-stack-icons">
                             <i class="ph-fill ph-python-logo"></i>
                         </div>
                         <span class="project-cta">View Details</span>
                     </div>
                 </div>
-                <div class="project-card" data-title="Portfolio Website" data-description="This is a dummy description for the Portfolio Website project. It would typically include details about features, technologies used, and challenges overcome." data-tech="<i class='ph-fill ph-file-html'></i><i class='ph-fill ph-file-css'></i><i class='ph-fill ph-file-js'></i>" data-github="https://github.com/dummy-repo/portfolio">
-                    <img src="assets/project-5.png" alt="Project 5">
+                <div class="project-card" data-title="Portfolio Website" data-description="A personal portfolio website to showcase my skills and projects. Designed to be visually appealing and easy to navigate." data-tech="<i class='ph-fill ph-file-html'></i><i class='ph-fill ph-file-css'></i><i class='ph-fill ph-file-js'></i>" data-github="https://github.com/faheem-2001/E-commerce-Web-Application">
+                    <img src="./assets/project-5.png" alt="Project 5">
                     <div class="card-content">
                         <h3>Portfolio Website</h3>
-                        <p>A brief description of project five.</p>
+                        <p>A personal portfolio to showcase my skills and projects.</p>
                         <div class="tech-stack-icons">
                             <i class="ph-fill ph-file-html"></i>
                             <i class="ph-fill ph-file-css"></i>
@@ -160,11 +162,11 @@
                         <span class="project-cta">View Details</span>
                     </div>
                 </div>
-                <div class="project-card" data-title="Task Management System" data-description="This is a dummy description for the Task Management System project. It would typically include details about features, technologies used, and challenges overcome." data-tech="<i class='ph-fill ph-django-logo'></i><i class='ph-fill ph-postgresql-logo'></i>" data-github="https://github.com/dummy-repo/task-manager">
-                    <img src="assets/project-6.png" alt="Project 6">
+                <div class="project-card" data-title="Task Management System" data-description="A web application for managing tasks and projects. Features include task creation, assignment, and progress tracking with a Kanban board." data-tech="<i class='ph-fill ph-django-logo'></i><i class='ph-fill ph-postgresql-logo'></i>" data-github="https://github.com/faheem-2001/E-commerce-Web-Application">
+                    <img src="./assets/project-6.png" alt="Project 6">
                     <div class="card-content">
                         <h3>Task Manager</h3>
-                        <p>A brief description of project six.</p>
+                        <p>A web application for managing tasks and projects.</p>
                         <div class="tech-stack-icons">
                             <i class="ph-fill ph-django-logo"></i>
                         </div>
@@ -174,10 +176,10 @@
             </div>
         </section>
 
-        <div class="project-modal" id="projectModal">
+        <div class="project-modal" id="projectModal" role="dialog" aria-modal="true">
             <div class="modal-content">
                 <span class="close-button">&times;</span>
-                <img src="" alt="" class="modal-img">
+                <img src="" alt="Project preview image" class="modal-img">
                 <h2 class="modal-title"></h2>
                 <div class="modal-tech-stack"></div>
                 <p class="modal-description"></p>
@@ -187,23 +189,25 @@
 
         <section id="contact" class="contact-section" data-scroll-section>
             <h2>Get in Touch</h2>
-            <form class="contact-form">
+            <form class="contact-form" autocomplete="off">
                 <input type="text" placeholder="Name" class="glassmorphic-input">
                 <input type="email" placeholder="Email" class="glassmorphic-input">
                 <textarea placeholder="Message" class="glassmorphic-input"></textarea>
                 <button type="submit" class="submit-button">Send Message</button>
             </form>
             <div class="social-icons">
-                <a href="#" title="GitHub"><i class="ph-fill ph-github-logo"></i><span class="sr-only">GitHub</span></a>
-                <a href="#"><i class="ph-fill ph-linkedin-logo"></i></a>
+                <a href="https://github.com/faheem-2001" title="GitHub"><i class="ph-fill ph-github-logo"></i><span class="sr-only">GitHub</span></a>
+                <a href="https://www.linkedin.com/in/faheem-khan-9a733a228/"><i class="ph-fill ph-linkedin-logo"></i></a>
+                <a href="https://www.upwork.com/freelancers/~012511588219214953" title="Upwork"><i class="ph-fill ph-briefcase"></i></a>
             </div>
         </section>
 
         <footer class="footer-section" data-scroll-section>
             <div class="footer-content">
                 <div class="footer-social">
-                    <a href="#" title="GitHub"><i class="ph-fill ph-github-logo"></i><span class="sr-only">GitHub</span></a>
-                    <a href="#"><i class="ph-fill ph-linkedin-logo"></i></a>
+                    <a href="https://github.com/faheem-2001" title="GitHub"><i class="ph-fill ph-github-logo"></i><span class="sr-only">GitHub</span></a>
+                    <a href="https://www.linkedin.com/in/faheem-khan-9a733a228/"><i class="ph-fill ph-linkedin-logo"></i></a>
+                    <a href="https://www.upwork.com/freelancers/~012511588219214953" title="Upwork"><i class="ph-fill ph-briefcase"></i></a>
                 </div>
                 <p>&copy; 2024 Faheem. All rights reserved.</p>
             </div>
@@ -214,6 +218,11 @@
             </div>
         </footer>
     </div>
-    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.halo.min.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
