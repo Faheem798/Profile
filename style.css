@@ -51,8 +51,30 @@ body {
     cursor: none;
 }
 
+body.cursor-hidden .cursor-dot,
+body.cursor-hidden .cursor-outline {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.vanta-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    z-index: -1;
+    transition: opacity 3s ease-in-out;
+}
+
+.vanta-overlay.hidden {
+    opacity: 0;
+}
+
 /* Custom Cursor */
 .cursor-dot {
+    display: none;
     width: 8px;
     height: 8px;
     background-color: var(--primary-color);
@@ -64,9 +86,11 @@ body {
     z-index: 99999;
     pointer-events: none;
     transition: transform 0.1s ease-out;
+    will-change: transform;
 }
 
 .cursor-outline {
+    display: none;
     width: 30px;
     height: 30px;
     border: 2px solid var(--primary-color);
@@ -78,6 +102,7 @@ body {
     z-index: 99998;
     pointer-events: none;
     transition: all 0.2s ease-out;
+    will-change: transform, border-color;
 }
 
 /* Theme Switcher */
@@ -898,6 +923,17 @@ textarea.glassmorphic-input {
 }
 
 /* Responsive Design */
+@media (min-width: 1025px) {
+    body {
+        cursor: default;
+    }
+
+    .cursor-dot,
+    .cursor-outline {
+        display: none;
+    }
+}
+
 @media (max-width: 1200px) {
     .projects-container {
         grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));

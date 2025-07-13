@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const modal = document.getElementById("projectModal");
     const closeModal = document.querySelector(".close-button");
     const contactForm = document.querySelector(".contact-form");
+    const vantaOverlay = document.querySelector(".vanta-overlay");
 
     // Fallback: Hide preloader after 4 seconds
     const preloaderTimeout = setTimeout(() => {
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
         try { initGSAPAnimations(); } catch(e) { console.error('GSAP Animations init failed:', e); }
         try { initTypingAnimation(); } catch(e) { console.error('Typing Animation init failed:', e); }
         try { initThemeSwitcher(); } catch(e) { console.error('Theme Switcher init failed:', e); }
-        try { initCursor(); } catch(e) { console.error('Cursor init failed:', e); }
+        try { initProjectModal(); } catch(e) { console.error('Project Modal init failed:', e); }
     }
 
     // Preloader Animation
@@ -40,6 +41,8 @@ document.addEventListener("DOMContentLoaded", function() {
             clearTimeout(preloaderTimeout);
             if (preloader) preloader.style.display = "none";
             if (main) main.style.visibility = 'visible';
+            document.body.classList.remove('cursor-hidden');
+            if (vantaOverlay) vantaOverlay.classList.add('hidden');
             safeInitAll();
         }
     });
@@ -141,22 +144,15 @@ document.addEventListener("DOMContentLoaded", function() {
     function initCursor() {
         if (!cursorDot || !cursorOutline) return;
 
-        let posX = 0, posY = 0;
-        let mouseX = 0, mouseY = 0;
+        window.addEventListener("mousemove", function (e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
 
-        gsap.to({}, 0.016, {
-            repeat: -1,
-            onRepeat: function() {
-                posX += (mouseX - posX) / 9;
-                posY += (mouseY - posY) / 9;
-                gsap.set(cursorOutline, { css: { left: posX - 15, top: posY - 15 } });
-                gsap.set(cursorDot, { css: { left: mouseX, top: mouseY } });
-            }
-        });
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
 
-        window.addEventListener("mousemove", e => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+            cursorOutline.style.left = `${posX}px`;
+            cursorOutline.style.top = `${posY}px`;
         });
 
         document.querySelectorAll("a, button, .project-card, .tech-tag, .theme-switcher").forEach(el => {
@@ -167,6 +163,32 @@ document.addEventListener("DOMContentLoaded", function() {
                 gsap.to(cursorOutline, { scale: 1, borderColor: "var(--primary-color)", duration: 0.3 });
             });
         });
+    }
+
+    function initProjectModal() {
+        if (!projectsContainer || !modal || !closeModal) return;
+
+        projectsContainer.addEventListener('click', function(e) {
+            const card = e.target.closest('.project-card');
+            if (card) {
+                modal.querySelector(".modal-title").textContent = card.dataset.title;
+                modal.querySelector(".modal-description").textContent = card.dataset.description;
+                modal.querySelector(".modal-tech-stack").innerHTML = card.dataset.tech;
+                modal.querySelector(".modal-img").src = card.querySelector("img").src;
+                modal.querySelector(".project-link").href = card.dataset.github;
+
+                modal.classList.add("active");
+                if (scroll) scroll.stop();
+            }
+        });
+
+        const closeModalFunc = () => {
+            modal.classList.remove("active");
+            if (scroll) scroll.start();
+        };
+
+        closeModal.addEventListener("click", closeModalFunc);
+        modal.addEventListener("click", e => { if (e.target === modal) closeModalFunc(); });
     }
 
     function initGSAPAnimations() {
@@ -201,30 +223,6 @@ document.addEventListener("DOMContentLoaded", function() {
         gsap.from(".skill-icons i", { opacity: 0, y: 20, stagger: 0.1, duration: 0.5, scrollTrigger: { trigger: ".skill-icons", scroller: scrollContainer, start: "top 90%" } });
 
         gsap.from(".project-card", { y: 100, scale: 0.9, stagger: 0.2, duration: 1, ease: "power4.out", scrollTrigger: { trigger: projectsContainer, scroller: scrollContainer, start: "top 85%" } });
-
-        if (projectsContainer && modal && closeModal) {
-            projectsContainer.addEventListener("click", e => {
-                const card = e.target.closest(".project-card");
-                if (!card) return;
-
-                modal.querySelector(".modal-title").textContent = card.dataset.title;
-                modal.querySelector(".modal-description").textContent = card.dataset.description;
-                modal.querySelector(".modal-tech-stack").innerHTML = card.dataset.tech;
-                modal.querySelector(".modal-img").src = card.querySelector("img").src;
-                modal.querySelector(".project-link").href = card.dataset.github;
-
-                modal.classList.add("active");
-                if (scroll) scroll.stop();
-            });
-
-            const closeModalFunc = () => {
-                modal.classList.remove("active");
-                if (scroll) scroll.start();
-            };
-
-            closeModal.addEventListener("click", closeModalFunc);
-            modal.addEventListener("click", e => { if (e.target === modal) closeModalFunc(); });
-        }
 
         if (contactForm) {
             contactForm.addEventListener("submit", e => e.preventDefault());
